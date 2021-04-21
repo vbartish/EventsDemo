@@ -21,4 +21,9 @@ done
 sqlcmd -i /scripts/setup.sql -I
 
 echo "Migration completed."
+
+echo "Enabling CDC."
+bash /scripts/enable_cdc.sh
+echo "CDC enabled."
+
 sleep infinity

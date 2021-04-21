@@ -8,5 +8,6 @@ This project intended for experiments and demo purposes around events aggregatio
 
 
 ## Demo steps
-1. get tye and set up SQL Server DB and schema
-2. get SQL server DB fake data gen built using GRPC service and client
+1. get Tye, set up SQL Server DB and get fake data gen built using GRPC service and client 
+   (for those who are not familiar with GRPC and protobuf - visit https://docs.microsoft.com/en-us/aspnet/core/grpc/?view=aspnetcore-5.0)
+2. get CDC enabled on SQL Server (More about SQL Server CDC here https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=sql-server-ver15)
