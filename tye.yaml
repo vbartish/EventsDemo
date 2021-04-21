@@ -27,6 +27,90 @@ services:
     - SA_PASSWORD=YourStrongPassw0rd
     - MSSQL_AGENT_ENABLED=true
 
+  - name: kafka-zookeeper
+    image: confluentinc/cp-zookeeper:6.1.0
+    tags:
+      - kafka
+    bindings:
+      - name: zookeeper
+        port: 2181
+      - name: zookeeper-secure
+        port: 2182
+    env:
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_TICK_TIME=2000
+    volumes:
+      - source: ./data/kafka
+        target: /var/lib/kafka/data-z
+
+  - name: kafka-broker-1
+    image: confluentinc/cp-kafka:6.1.0
+    tags:
+      - kafka
+    bindings:
+      - name: PlainTextListener
+        port: 29092
+      - name: PlainTextHostListener
+        port: 9092
+      - name: Jmx
+        port: 9091
+    env:
+      - KAFKA_ZOOKEEPER_CONNECT="kafka-zookeeper:2181"
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_ADVERTISED_LISTENERS="PLAINTEXT://kafka-broker-1:29092,PLAINTEXT_HOST://kafka-broker-1:9092"
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+      - KAFKA_JMX_PORT=9091
+      - KAFKA_JMX_HOSTNAME=kafka-broker-1
+    volumes:
+      - source: ./data/kafka
+        target: /var/lib/kafka/data-1
+
+  - name: kafka-broker-2
+    image: confluentinc/cp-kafka:6.1.0
+    tags:
+      - kafka
+    bindings:
+      - name: PlainTextListener
+        port: 29094
+      - name: PlainTextHostListener
+        port: 9094
+      - name: Jmx
+        port: 9093
+    env:
+      - KAFKA_ZOOKEEPER_CONNECT="kafka-zookeeper:2181"
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_ADVERTISED_LISTENERS="PLAINTEXT://kafka-broker-2:29094,PLAINTEXT_HOST://kafka-broker-2:9094"
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+      - KAFKA_JMX_PORT=9093
+      - KAFKA_JMX_HOSTNAME=kafka-broker-2
+    volumes:
+      - source: ./data/kafka
+        target: /var/lib/kafka/data-2
+
+  - name: confluent-control-center
+    image: confluentinc/cp-enterprise-control-center:5.5.0
+    tags:
+      - kafka
+    bindings:
+      - protocol: http
+        port: 9021
+        containerPort: 9021
+    env:
+      - CONTROL_CENTER_BOOTSTRAP_SERVERS="kafka-broker-1:29092,kafka-broker-2:29094"
+      - CONTROL_CENTER_ZOOKEEPER_CONNECT="kafka-zookeeper:2181"
+      - CONTROL_CENTER_REPLICATION_FACTOR=1
+      - CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS=1
+      - CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS=1
+      - CONFLUENT_METRICS_TOPIC_REPLICATION=1
+      - PORT=9021
+
+
   - name: configurator
     dockerFile: Docker/Configurator.Dockerfile
     dockerFileContext: .

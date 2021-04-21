@@ -11,3 +11,7 @@ This project intended for experiments and demo purposes around events aggregatio
 1. get Tye, set up SQL Server DB and get fake data gen built using GRPC service and client 
    (for those who are not familiar with GRPC and protobuf - visit https://docs.microsoft.com/en-us/aspnet/core/grpc/?view=aspnetcore-5.0)
 2. get CDC enabled on SQL Server (More about SQL Server CDC here https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=sql-server-ver15)
+3.  Get kafka infrastructure and utils:
+   - Learning resources: https://kafka.apache.org/, https://www.confluent.io/
+   - Confluent`s github https://github.com/confluentinc/
+   - Confluent`s docker hub https://hub.docker.com/u/confluentinc
