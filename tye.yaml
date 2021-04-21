@@ -88,19 +88,6 @@ services:
       - source: ./data/kafka
         target: /var/lib/kafka/data-2
 
-  - name: kafka-rest-proxy
-    image: confluentinc/cp-kafka-rest:5.5.0
-    tags:
-      - kafka
-    bindings:
-      - port: 8082
-        containerPort: 8082
-        protocol: http
-    env:
-      - KAFKA_REST_HOST_NAME=kafka-rest-proxy
-      - KAFKA_REST_BOOTSTRAP_SERVERS="kafka-broker-1:29092,kafka-broker-2:29094"
-      - KAFKA_REST_LISTENERS="http://0.0.0.0:8082"
-
   - name: confluent-control-center
     image: confluentinc/cp-enterprise-control-center:5.5.0
     tags:
@@ -118,6 +105,38 @@ services:
       - CONFLUENT_METRICS_TOPIC_REPLICATION=1
       - PORT=9021
 
+  - name: kafka-connect
+    image: debezium/connect:1.4
+    tags:
+      - kafka
+    bindings:
+      - port: 8083
+        containerPort: 8083
+        protocol: http
+    env:
+      - CONFIG_STORAGE_TOPIC=my_connect_configs
+      - OFFSET_STORAGE_TOPIC=my_connect_offsets
+      - STATUS_STORAGE_TOPIC=my_connect_statuses
+      - BOOTSTRAP_SERVERS="kafka-broker-1:29092,kafka-broker-2:29094"
+      - ZOOKEEPER_CONNECT="kafka-zookeeper:2181"
+      - REST_PORT=8083
+      - REST_HOST_NAME=kafka-connect
+      - ADVERTISED_HOST_NAME=kafka-connect
+      - LOG4J_ROOT_LOGLEVEL=INFO
+      - LOG4J_LOGGERS="org.reflections=ERROR"
+      - GROUP_ID="kafka-connect"
+
+  - name: kafka-connect-ui
+    image: landoop/kafka-connect-ui
+    tags:
+      - kafka
+    bindings:
+      - port: 8001
+        containerPort: 8001
+        protocol: http
+    env:
+      - CONNECT_URL="http://kafka-connect:8083/"
+      - PROXY="true"
 
   - name: configurator
     dockerFile: Docker/Configurator.Dockerfile
@@ -130,3 +149,7 @@ services:
       - SQL_SERVER_DATABASE=Inventory
       - SQL_SERVER_SERVER_NAME=dbServer
       - CDC_TABLES="dbo.Engines,dbo.Vehicles"
+      - CONNECT_HOST=kafka-connect
+      - CONNECT_PORT=8083
+      - KAFKA_BOOTSTRAP_SERVERS="kafka-broker-1:29092,kafka-broker-2:29094"
+      - KAFKA_HISTORY_TOPIC=my-connector-history
