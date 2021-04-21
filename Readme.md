@@ -9,3 +9,4 @@ This project intended for experiments and demo purposes around events aggregatio
 
 ## Demo steps
 1. get tye and set up SQL Server DB and schema
+2. get SQL server DB fake data gen built using GRPC service and client

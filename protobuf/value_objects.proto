@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package vbart.events_demo.inventory.value_objects;
+
+option csharp_namespace = "VBart.EventsDemo.Grpc.ValueObjects";
+
+import "google/protobuf/wrappers.proto";
+
+message Engines {
+  repeated Engine engines = 1;
+}
+
+message Engine {
+  google.protobuf.StringValue engine_uuid = 1;
+  google.protobuf.StringValue vehicle_uuid = 2;
+  int32 year_of_manufacture = 3;
+  string manufacturer = 4;
+  int32 maximum_engine_speed = 5;
+  int32 maximum_mileage_resource = 6;
+  int32 remaining_mileage_resource = 7;
+}
+
+message Vehicles {
+  repeated Vehicle vehicles = 1;
+}
+
+message Vehicle {
+  google.protobuf.StringValue vehicle_uuid = 1;
+  int32 year_of_manufacture = 2;
+  string model = 3;
+}
