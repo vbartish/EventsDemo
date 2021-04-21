@@ -32,3 +32,4 @@ services:
       - SQL_SERVER_PASSWORD=YourStrongPassw0rd
       - SQL_SERVER_DATABASE=Inventory
       - SQL_SERVER_SERVER_NAME=dbServer
+      - CDC_TABLES="dbo.Engines,dbo.Vehicles"
