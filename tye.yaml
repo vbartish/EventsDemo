@@ -14,7 +14,7 @@ services:
     replicas: 2
 
   - name: monolithicdb
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/mssql/server:2019-CU10-ubuntu-20.04
     tags:
       - monolithic_db
     bindings:
@@ -104,12 +104,33 @@ services:
     env:
       - CONTROL_CENTER_BOOTSTRAP_SERVERS="kafka-broker-1:29092,kafka-broker-2:29094"
       - CONTROL_CENTER_ZOOKEEPER_CONNECT="kafka-zookeeper:2181"
+      - CONTROL_CENTER_CONNECT_CLUSTER="http://kafka-connect:8083/"
       - CONTROL_CENTER_REPLICATION_FACTOR=1
       - CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS=1
       - CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS=1
       - CONFLUENT_METRICS_TOPIC_REPLICATION=1
       - PORT=9021
 
+  - name: kafka-connect
+    image: debezium/connect:1.4
+    tags:
+      - kafka
+    bindings:
+      - port: 8083
+        containerPort: 8083
+        protocol: http
+    env:
+      - CONFIG_STORAGE_TOPIC=my_connect_configs
+      - OFFSET_STORAGE_TOPIC=my_connect_offsets
+      - STATUS_STORAGE_TOPIC=my_connect_statuses
+      - BOOTSTRAP_SERVERS="kafka-broker-1:29092,kafka-broker-2:29094"
+      - ZOOKEEPER_CONNECT="kafka-zookeeper:2181"
+      - REST_PORT=8083
+      - REST_HOST_NAME=kafka-connect
+      - ADVERTISED_HOST_NAME=kafka-connect
+      - LOG4J_ROOT_LOGLEVEL=INFO
+      - LOG4J_LOGGERS="org.reflections=ERROR"
+      - GROUP_ID="kafka-connect"
 
   - name: configurator
     dockerFile: Docker/Configurator.Dockerfile
@@ -122,3 +143,7 @@ services:
       - SQL_SERVER_DATABASE=Inventory
       - SQL_SERVER_SERVER_NAME=dbServer
       - CDC_TABLES="dbo.Engines,dbo.Vehicles"
+      - CONNECT_HOST=kafka-connect
+      - CONNECT_PORT=8083
+      - KAFKA_BOOTSTRAP_SERVERS="kafka-broker-1:29092,kafka-broker-2:29094"
+      - KAFKA_HISTORY_TOPIC=my-connector-history

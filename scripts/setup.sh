@@ -26,4 +26,8 @@ echo "Enabling CDC."
 bash /scripts/enable_cdc.sh
 echo "CDC enabled."
 
+echo "Creating connector."
+bash /scripts/connector.sh
+
+echo "Connector created."
 sleep infinity
