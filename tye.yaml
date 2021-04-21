@@ -1,0 +1,39 @@
+name: vbart.eventsdemo
+services:
+  - name: InventoryApi
+    project: src\VBart.EventsDemo.Inventory.Api\VBart.EventsDemo.Inventory.Api.csproj
+    replicas: 2
+    bindings:
+      - protocol: http
+        port: 50052
+        containerPort: 50052
+
+  - name: DataGen
+    project: src\VBart.EventsDemo.Inventory.DataGen\VBart.EventsDemo.Inventory.DataGen.csproj
+    args: "--vehicles 15 --wait 1"
+    replicas: 2
+
+  - name: monolithicdb
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    tags:
+      - monolithic_db
+    bindings:
+      - name: Default
+        port: 1433
+      - name: Connection
+        connectionString: Server=${host};Database=Inventory;User Id=sa;Password=YourStrongPassw0rd;Enlist=true;
+    env:
+    - ACCEPT_EULA=Y
+    - SA_PASSWORD=YourStrongPassw0rd
+    - MSSQL_AGENT_ENABLED=true
+
+  - name: configurator
+    dockerFile: Docker/Configurator.Dockerfile
+    dockerFileContext: .
+    env:
+      - SQL_SERVER_HOST=monolithicdb
+      - SQL_SERVER_PORT=1433
+      - SQL_SERVER_USER=sa
+      - SQL_SERVER_PASSWORD=YourStrongPassw0rd
+      - SQL_SERVER_DATABASE=Inventory
+      - SQL_SERVER_SERVER_NAME=dbServer
