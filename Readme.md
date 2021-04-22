@@ -24,4 +24,10 @@ Nice! you've got CDC running!
 
 6. Get utils prepared (pipeline, background worker)
 7. Prepare Aggregator state store
-8. Consume!
+8. Consume! 
+   - cheat sheet: if connector misbehaves try 
+      a) find the configurator container in docker 
+      b) docker exec -it <containerId> bash/sh 
+      c) run `curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" $CONNECT_HOST:$CONNECT_PORT/connectors/ -d '{ "name": "myConnector", "config": { "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector", "database.hostname": '"\"$SQL_SERVER_HOST\""', "database.port": '"\"$SQL_SERVER_PORT\""', "database.password": '"\"$SQL_SERVER_PASSWORD\""',  "database.user": '"\"$SQL_SERVER_USER\""', "database.dbname": '"\"$SQL_SERVER_DATABASE\""', "database.server.name": '"\"$SQL_SERVER_SERVER_NAME\""', "table.include.list": '"\"$CDC_TABLES\""',  "database.history.kafka.bootstrap.servers": '"\"$KAFKA_BOOTSTRAP_SERVERS\""', "database.history.kafka.topic": '"\"$KAFKA_HISTORY_TOPIC\""', "tombstones.on.delete": "true", "database.applicationIntent": "ReadOnly", "snapshot.isolation.mode": "snapshot", "snapshot.fetch.size": "20000", "snapshot.mode": "initial", "poll.interval.ms": "100", "max.batch.size": "66536", "max.queue.size": "131072", "tasks.max": "1" } }'` (basically re-creates connector in the same way as it is done in scripts/connector.sh)
+      d) more connect API data here https://docs.confluent.io/3.2.0/connect/managing.html#using-the-rest-interface
+9.

@@ -10,6 +10,14 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
 import "value_objects.proto";
 
+message Change {
+  string entity_uuid = 1;
+  google.protobuf.Timestamp changed_at = 2;
+  uint32 revision_number = 5;
+  google.protobuf.Any event = 6;
+  google.protobuf.Any resulting_state = 7;
+}
+
 message Vehicle {
   string vehicle_uuid = 1;
   int32 year_of_manufacture = 2;

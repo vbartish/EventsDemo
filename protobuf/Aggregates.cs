@@ -28,25 +28,30 @@ namespace VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates {
             "cnkuYWdncmVnYXRlcxoZZ29vZ2xlL3Byb3RvYnVmL2FueS5wcm90bxoeZ29v",
             "Z2xlL3Byb3RvYnVmL3dyYXBwZXJzLnByb3RvGh9nb29nbGUvcHJvdG9idWYv",
             "dGltZXN0YW1wLnByb3RvGiBnb29nbGUvcHJvdG9idWYvZmllbGRfbWFzay5w",
-            "cm90bxoTdmFsdWVfb2JqZWN0cy5wcm90byKOAQoHVmVoaWNsZRIUCgx2ZWhp",
-            "Y2xlX3V1aWQYASABKAkSGwoTeWVhcl9vZl9tYW51ZmFjdHVyZRgCIAEoBRIN",
-            "CgVtb2RlbBgDIAEoCRJBCgZlbmdpbmUYBCABKAsyMS52YmFydC5ldmVudHNf",
-            "ZGVtby5pbnZlbnRvcnkudmFsdWVfb2JqZWN0cy5FbmdpbmUipgEKCE1ldGFE",
-            "YXRhEk8KB2VudHJpZXMYASADKAsyPi52YmFydC5ldmVudHNfZGVtby5pbnZl",
-            "bnRvcnkuYWdncmVnYXRlcy5NZXRhRGF0YS5NZXRhZGF0YUVudHJ5GkkKDU1l",
-            "dGFkYXRhRW50cnkSCwoDa2V5GAEgASgJEisKBXZhbHVlGAIgASgLMhwuZ29v",
-            "Z2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlIlIKDlZlaGljbGVDcmVhdGVkEkAK",
-            "B3ZlaGljbGUYASABKAsyLy52YmFydC5ldmVudHNfZGVtby5pbnZlbnRvcnku",
-            "YWdncmVnYXRlcy5WZWhpY2xlIkcKDlZlaGljbGVEZWxldGVkEhQKDHZlaGlj",
-            "bGVfdXVpZBgBIAEoCRIfChd2ZWhpY2xlX3JldmlzaW9uX251bWJlchgCIAEo",
-            "DSKCAQoOVmVoaWNsZVVwZGF0ZWQSQAoHdmVoaWNsZRgBIAEoCzIvLnZiYXJ0",
-            "LmV2ZW50c19kZW1vLmludmVudG9yeS5hZ2dyZWdhdGVzLlZlaGljbGUSLgoK",
-            "ZmllbGRfbWFzaxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5GaWVsZE1hc2tC",
-            "OqoCN1ZCYXJ0LkV2ZW50c0RlbW8uSW52ZW50b3J5LkFnZ3JlZ2F0b3IuRG9t",
-            "YWluLkFnZ3JlZ2F0ZXNiBnByb3RvMw=="));
+            "cm90bxoTdmFsdWVfb2JqZWN0cy5wcm90byK6AQoGQ2hhbmdlEhMKC2VudGl0",
+            "eV91dWlkGAEgASgJEi4KCmNoYW5nZWRfYXQYAiABKAsyGi5nb29nbGUucHJv",
+            "dG9idWYuVGltZXN0YW1wEhcKD3JldmlzaW9uX251bWJlchgFIAEoDRIjCgVl",
+            "dmVudBgGIAEoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnkSLQoPcmVzdWx0aW5n",
+            "X3N0YXRlGAcgASgLMhQuZ29vZ2xlLnByb3RvYnVmLkFueSKOAQoHVmVoaWNs",
+            "ZRIUCgx2ZWhpY2xlX3V1aWQYASABKAkSGwoTeWVhcl9vZl9tYW51ZmFjdHVy",
+            "ZRgCIAEoBRINCgVtb2RlbBgDIAEoCRJBCgZlbmdpbmUYBCABKAsyMS52YmFy",
+            "dC5ldmVudHNfZGVtby5pbnZlbnRvcnkudmFsdWVfb2JqZWN0cy5FbmdpbmUi",
+            "pgEKCE1ldGFEYXRhEk8KB2VudHJpZXMYASADKAsyPi52YmFydC5ldmVudHNf",
+            "ZGVtby5pbnZlbnRvcnkuYWdncmVnYXRlcy5NZXRhRGF0YS5NZXRhZGF0YUVu",
+            "dHJ5GkkKDU1ldGFkYXRhRW50cnkSCwoDa2V5GAEgASgJEisKBXZhbHVlGAIg",
+            "ASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlIlIKDlZlaGljbGVD",
+            "cmVhdGVkEkAKB3ZlaGljbGUYASABKAsyLy52YmFydC5ldmVudHNfZGVtby5p",
+            "bnZlbnRvcnkuYWdncmVnYXRlcy5WZWhpY2xlIkcKDlZlaGljbGVEZWxldGVk",
+            "EhQKDHZlaGljbGVfdXVpZBgBIAEoCRIfChd2ZWhpY2xlX3JldmlzaW9uX251",
+            "bWJlchgCIAEoDSKCAQoOVmVoaWNsZVVwZGF0ZWQSQAoHdmVoaWNsZRgBIAEo",
+            "CzIvLnZiYXJ0LmV2ZW50c19kZW1vLmludmVudG9yeS5hZ2dyZWdhdGVzLlZl",
+            "aGljbGUSLgoKZmllbGRfbWFzaxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5G",
+            "aWVsZE1hc2tCOqoCN1ZCYXJ0LkV2ZW50c0RlbW8uSW52ZW50b3J5LkFnZ3Jl",
+            "Z2F0b3IuRG9tYWluLkFnZ3JlZ2F0ZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::VBart.EventsDemo.Grpc.ValueObjects.ValueObjectsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.Change), global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.Change.Parser, new[]{ "EntityUuid", "ChangedAt", "RevisionNumber", "Event", "ResultingState" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.Vehicle), global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.Vehicle.Parser, new[]{ "VehicleUuid", "YearOfManufacture", "Model", "Engine" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.MetaData), global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.MetaData.Parser, new[]{ "Entries" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.MetaData.Types.MetadataEntry), global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.MetaData.Types.MetadataEntry.Parser, new[]{ "Key", "Value" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.VehicleCreated), global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.VehicleCreated.Parser, new[]{ "Vehicle" }, null, null, null, null),
@@ -58,6 +63,349 @@ namespace VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates {
 
   }
   #region Messages
+  public sealed partial class Change : pb::IMessage<Change>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Change> _parser = new pb::MessageParser<Change>(() => new Change());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Change> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Change() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Change(Change other) : this() {
+      entityUuid_ = other.entityUuid_;
+      changedAt_ = other.changedAt_ != null ? other.changedAt_.Clone() : null;
+      revisionNumber_ = other.revisionNumber_;
+      event_ = other.event_ != null ? other.event_.Clone() : null;
+      resultingState_ = other.resultingState_ != null ? other.resultingState_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Change Clone() {
+      return new Change(this);
+    }
+
+    /// <summary>Field number for the "entity_uuid" field.</summary>
+    public const int EntityUuidFieldNumber = 1;
+    private string entityUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string EntityUuid {
+      get { return entityUuid_; }
+      set {
+        entityUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "changed_at" field.</summary>
+    public const int ChangedAtFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp changedAt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp ChangedAt {
+      get { return changedAt_; }
+      set {
+        changedAt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "revision_number" field.</summary>
+    public const int RevisionNumberFieldNumber = 5;
+    private uint revisionNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint RevisionNumber {
+      get { return revisionNumber_; }
+      set {
+        revisionNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "event" field.</summary>
+    public const int EventFieldNumber = 6;
+    private global::Google.Protobuf.WellKnownTypes.Any event_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Any Event {
+      get { return event_; }
+      set {
+        event_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "resulting_state" field.</summary>
+    public const int ResultingStateFieldNumber = 7;
+    private global::Google.Protobuf.WellKnownTypes.Any resultingState_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Any ResultingState {
+      get { return resultingState_; }
+      set {
+        resultingState_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Change);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Change other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (EntityUuid != other.EntityUuid) return false;
+      if (!object.Equals(ChangedAt, other.ChangedAt)) return false;
+      if (RevisionNumber != other.RevisionNumber) return false;
+      if (!object.Equals(Event, other.Event)) return false;
+      if (!object.Equals(ResultingState, other.ResultingState)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (EntityUuid.Length != 0) hash ^= EntityUuid.GetHashCode();
+      if (changedAt_ != null) hash ^= ChangedAt.GetHashCode();
+      if (RevisionNumber != 0) hash ^= RevisionNumber.GetHashCode();
+      if (event_ != null) hash ^= Event.GetHashCode();
+      if (resultingState_ != null) hash ^= ResultingState.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (EntityUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(EntityUuid);
+      }
+      if (changedAt_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ChangedAt);
+      }
+      if (RevisionNumber != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(RevisionNumber);
+      }
+      if (event_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Event);
+      }
+      if (resultingState_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ResultingState);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (EntityUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(EntityUuid);
+      }
+      if (changedAt_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ChangedAt);
+      }
+      if (RevisionNumber != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(RevisionNumber);
+      }
+      if (event_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Event);
+      }
+      if (resultingState_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ResultingState);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (EntityUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(EntityUuid);
+      }
+      if (changedAt_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChangedAt);
+      }
+      if (RevisionNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RevisionNumber);
+      }
+      if (event_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Event);
+      }
+      if (resultingState_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ResultingState);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Change other) {
+      if (other == null) {
+        return;
+      }
+      if (other.EntityUuid.Length != 0) {
+        EntityUuid = other.EntityUuid;
+      }
+      if (other.changedAt_ != null) {
+        if (changedAt_ == null) {
+          ChangedAt = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        ChangedAt.MergeFrom(other.ChangedAt);
+      }
+      if (other.RevisionNumber != 0) {
+        RevisionNumber = other.RevisionNumber;
+      }
+      if (other.event_ != null) {
+        if (event_ == null) {
+          Event = new global::Google.Protobuf.WellKnownTypes.Any();
+        }
+        Event.MergeFrom(other.Event);
+      }
+      if (other.resultingState_ != null) {
+        if (resultingState_ == null) {
+          ResultingState = new global::Google.Protobuf.WellKnownTypes.Any();
+        }
+        ResultingState.MergeFrom(other.ResultingState);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            EntityUuid = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (changedAt_ == null) {
+              ChangedAt = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(ChangedAt);
+            break;
+          }
+          case 40: {
+            RevisionNumber = input.ReadUInt32();
+            break;
+          }
+          case 50: {
+            if (event_ == null) {
+              Event = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(Event);
+            break;
+          }
+          case 58: {
+            if (resultingState_ == null) {
+              ResultingState = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(ResultingState);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            EntityUuid = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (changedAt_ == null) {
+              ChangedAt = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(ChangedAt);
+            break;
+          }
+          case 40: {
+            RevisionNumber = input.ReadUInt32();
+            break;
+          }
+          case 50: {
+            if (event_ == null) {
+              Event = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(Event);
+            break;
+          }
+          case 58: {
+            if (resultingState_ == null) {
+              ResultingState = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(ResultingState);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class Vehicle : pb::IMessage<Vehicle>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -70,7 +418,7 @@ namespace VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[0]; }
+      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -359,7 +707,7 @@ namespace VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[1]; }
+      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -743,7 +1091,7 @@ namespace VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[2]; }
+      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -924,7 +1272,7 @@ namespace VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[3]; }
+      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1132,7 +1480,7 @@ namespace VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[4]; }
+      get { return global::VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates.AggregatesReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
