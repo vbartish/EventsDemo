@@ -21,3 +21,5 @@ This project intended for experiments and demo purposes around events aggregatio
 
 
 Nice! you've got CDC running!
+
+6. Get utils prepared (pipeline, background worker)
