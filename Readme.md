@@ -23,6 +23,7 @@ This project intended for experiments and demo purposes around events aggregatio
 Nice! you've got CDC running!
 5. get utils prepared (pipeline, background worker)
 6. prepare Aggregator state store
+7. Consume!
 
 ### cheat sheet
 

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VBart.EventsDemo.Inventory.Aggregator.Domain\VBart.EventsDemo.Inventory.Aggregator.Domain.csproj" />
+      <ProjectReference Include="..\VBart.EventsDemo.Inventory.Data\VBart.EventsDemo.Inventory.Data.csproj" />
+    </ItemGroup>
+
+</Project>

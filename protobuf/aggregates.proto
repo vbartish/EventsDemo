@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package vbart.events_demo.inventory.aggregates;
+
+option csharp_namespace = "VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "value_objects.proto";
+
+message Vehicle {
+  string vehicle_uuid = 1;
+  int32 year_of_manufacture = 2;
+  string model = 3;
+  vbart.events_demo.inventory.value_objects.Engine engine = 4;
+}
+
+message MetaData {
+  message MetadataEntry {
+    string key = 1;
+    google.protobuf.StringValue value = 2;
+  }
+  repeated MetadataEntry entries = 1;
+}
+
+message VehicleCreated {
+    Vehicle vehicle = 1;
+}
+
+message VehicleDeleted {
+  string vehicle_uuid = 1;
+  uint32 vehicle_revision_number = 2;
+}
+
+message VehicleUpdated {
+  Vehicle vehicle = 1;
+  // This is a FieldMask to indicate which fields are being updated.
+  // If this is left blank, that indicates all of the fields are being updated.
+  google.protobuf.FieldMask field_mask = 2;
+}
