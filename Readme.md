@@ -24,3 +24,4 @@ Nice! you've got CDC running!
 
 6. Get utils prepared (pipeline, background worker)
 7. Prepare Aggregator state store
+8. Consume!

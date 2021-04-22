@@ -8,6 +8,16 @@ services:
     args: "--vehicles 15 --wait 1"
     replicas: 2
 
+  - name: InventoryAggregator
+    project: src\VBart.EventsDemo.Inventory.Aggregator\VBart.EventsDemo.Inventory.Aggregator.csproj
+    env:
+      - VEHICLE__KAFKA_CONSUMER_OPTIONS__ConsumerGroupId="aggregator"
+      - VEHICLE__KAFKA_CONSUMER_OPTIONS__Topics="dbServer.dbo.Vehicles"
+      - VEHICLE__KAFKA_CONSUMER_OPTIONS__BootstrapServers="kafka-broker-2:29094,kafka-broker-1:29092"
+      - ENGINE__KAFKA_CONSUMER_OPTIONS__ConsumerGroupId="aggregator"
+      - ENGINE__KAFKA_CONSUMER_OPTIONS__Topics="dbServer.dbo.Engines"
+      - ENGINE__KAFKA_CONSUMER_OPTIONS__BootstrapServers="kafka-broker-2:29094,kafka-broker-1:29092"
+
   - name: monolithicdb
     image: mcr.microsoft.com/mssql/server:latest
     bindings:
@@ -94,6 +104,7 @@ services:
       - CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS=1
       - CONFLUENT_METRICS_TOPIC_REPLICATION=1
       - PORT=9021
+      - CONTROL_CENTER_CONNECT_CLUSTER="http://kafka-connect:8083/"
 
   - name: kafka-connect
     image: debezium/connect:1.4
@@ -114,16 +125,6 @@ services:
       - LOG4J_LOGGERS="org.reflections=ERROR"
       - GROUP_ID="kafka-connect"
 
-  - name: kafka-connect-ui
-    image: landoop/kafka-connect-ui
-    bindings:
-      - port: 8001
-        containerPort: 8001
-        protocol: http
-    env:
-      - CONNECT_URL="http://kafka-connect:8083/"
-      - PROXY="true"
-
   - name: aggregatordb
     image: postgres:10.2
     tags:
@@ -133,9 +134,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=YourStrongPassw0rd
     bindings:
-      - name: Default
-        port: 5432
       - name: Connection
+        port: 5432
         connectionString: Server=${host};Port=${port};Database=postgres;User Id=postgres;Password=YourStrongPassw0rd;Enlist=true;
 
   - name: flyway
