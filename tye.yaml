@@ -17,6 +17,9 @@ services:
       - ENGINE__KAFKA_CONSUMER_OPTIONS__ConsumerGroupId="aggregator"
       - ENGINE__KAFKA_CONSUMER_OPTIONS__Topics="dbServer.dbo.Engines"
       - ENGINE__KAFKA_CONSUMER_OPTIONS__BootstrapServers="kafka-broker-2:29094,kafka-broker-1:29092"
+      - KAFKA_PRODUCER_OPTIONS__BootstrapServers="kafka-broker-2:29094,kafka-broker-1:29092"
+      - KAFKA_PRODUCER_OPTIONS__AutoCreateTopics=true
+
 
   - name: monolithicdb
     image: mcr.microsoft.com/mssql/server:latest

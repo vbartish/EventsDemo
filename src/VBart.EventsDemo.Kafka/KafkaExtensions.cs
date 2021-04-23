@@ -6,6 +6,7 @@ using Humanizer;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates;
 using VBart.EventsDemo.Inventory.Aggregator.Domain.Events;
 using VBart.EventsDemo.Utils;
 
@@ -90,6 +91,19 @@ namespace VBart.EventsDemo.Kafka
             return builder;
         }
 
+        public static ContainerBuilder AddChangeSerializers(this ContainerBuilder builder)
+        {
+            builder
+                .RegisterType<ChangeDeserializer>()
+                .As<IDeserializer<Change>>()
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterType<ChangeSerializer>()
+                .As<ISerializer<Change>>()
+                .InstancePerLifetimeScope();
+            return builder;
+        }
+
         public static ContainerBuilder AddKafkaConsumer<TKey, TValue>(
             this ContainerBuilder containerBuilder,
             string name)
@@ -125,6 +139,42 @@ namespace VBart.EventsDemo.Kafka
                 })
                 .As<IConsumer<TKey, TValue>>().InstancePerLifetimeScope();
             return containerBuilder;
+        }
+
+        public static ContainerBuilder AddKafkaProducer<TKey, TValue>(this ContainerBuilder builder)
+        {
+            builder
+                .RegisterOptions<KafkaProducerOptions>(null, registration => registration.InstancePerLifetimeScope())
+                .Register(componentContext =>
+                          {
+                              const string logCategoryName = "kafka-producer";
+                              var options = componentContext.Resolve<KafkaProducerOptions>();
+                              var loggerFactory = componentContext.Resolve<ILoggerFactory>();
+
+                              var producerBuilder = new ProducerBuilder<TKey, TValue>(
+                                      options.ToConfluentProducerConfiguration())
+                                  .SetLogHandler((_, message) => HandleKafkaLog(message, loggerFactory, logCategoryName))
+                                  .SetErrorHandler((_, error) => HandleKafkaErrorLog(error, loggerFactory, logCategoryName))
+                                  .SetStatisticsHandler((_, statistics) => HandleKafkaStatisticsLog(statistics, loggerFactory, logCategoryName));
+                              var (keySerializer, valueSerializer) =
+                                      (componentContext.ResolveOptional<ISerializer<TKey>>(), componentContext.ResolveOptional<ISerializer<TValue>>());
+
+                              if (valueSerializer != null)
+                              {
+                                  producerBuilder = producerBuilder.SetValueSerializer(valueSerializer);
+                              }
+
+                              if (keySerializer != null)
+                              {
+                                  producerBuilder = producerBuilder.SetKeySerializer(keySerializer);
+                              }
+
+                              return producerBuilder.Build();
+                          })
+                .As<IProducer<TKey, TValue>>()
+                .InstancePerLifetimeScope();
+
+            return builder;
         }
 
         private static void HandleKafkaLog(

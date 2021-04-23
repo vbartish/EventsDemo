@@ -6,6 +6,7 @@ using VBart.EventsDemo.Inventory.Aggregator.Domain.Aggregates;
 using VBart.EventsDemo.Inventory.Aggregator.Domain.Events;
 using VBart.EventsDemo.Inventory.Aggregator.Domain.Handling;
 using VBart.EventsDemo.Inventory.Aggregator.Domain.Projections;
+using VBart.EventsDemo.Inventory.Aggregator.Domain.Publishing;
 using VBart.EventsDemo.Inventory.Aggregator.Domain.WorkItems;
 using VBart.EventsDemo.Inventory.Aggregator.Domain.WorkItems.Generation;
 using VBart.EventsDemo.Inventory.Aggregator.Domain.WorkItems.Generation.AggregateRootKeyExtractors;
@@ -106,5 +107,53 @@ namespace VBart.EventsDemo.Inventory.Aggregator
                                     return pipelineScopeBuilder;
                                 });
                     });
+
+        public static ContainerBuilder AddOutboxPublisherWorker<TAggregate>(
+            this ContainerBuilder builder,
+            string workerName)
+        {
+            return builder.AddBackgroundWorker<OutboxWorkItem<Change>>(
+                workerName,
+                workerLifetimeScopeBuilder =>
+                {
+                    workerLifetimeScopeBuilder
+                        .AddDefaultBatchWorkItemPipeline<OutboxWorkItem<Change>,
+                            DefaultBatchWorkItemHandler<OutboxWorkItem<Change>>>(
+                            null,
+                            pipelineScopeBuilder =>
+                            {
+                                pipelineScopeBuilder.RegisterOptions<WorkItemProcessingOptions>(workerName);
+                                pipelineScopeBuilder.AddKafkaProducer<string, Change>();
+                                pipelineScopeBuilder.AddChangeSerializers();
+
+                                pipelineScopeBuilder
+                                    .RegisterType<KafkaChangePublisher>()
+                                    .As<IPublisher<Change>>()
+                                    .InstancePerLifetimeScope();
+
+                                pipelineScopeBuilder
+                                    .RegisterType<ExponentialBackoffDelayProvider>()
+                                    .As<IBackoffDelayProvider>()
+                                    .InstancePerLifetimeScope();
+                                pipelineScopeBuilder
+                                    .AddDefaultSingleWorkItemPipeline<OutboxWorkItem<Change>,
+                                        DefaultOutboxWorkItemHandler<Change>>(
+                                        nestedPipelineScopeBuilder =>
+                                        {
+                                            nestedPipelineScopeBuilder
+                                                .RegisterType<
+                                                    BlockingPerAggregateWorkItemHandlingFilter<CdcProjectionWorkItem>>()
+                                                .As<IWorkItemHandlingFilter<CdcProjectionWorkItem>>()
+                                                .InstancePerLifetimeScope();
+                                            return nestedPipelineScopeBuilder;
+                                        });
+                                return pipelineScopeBuilder;
+                            });
+                    workerLifetimeScopeBuilder
+                        .RegisterType<OutboxWorkItemsDataService<TAggregate>>()
+                        .As<IWorkItemDataService<OutboxWorkItem<Change>>>()
+                        .InstancePerLifetimeScope();
+                });
+        }
     }
 }

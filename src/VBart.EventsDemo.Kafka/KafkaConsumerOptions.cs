@@ -8,25 +8,10 @@ namespace VBart.EventsDemo.Kafka
 {
     public record KafkaConsumerOptions
     {
-        /// <summary>
-        /// Request broker's supported API versions to adjust functionality to available protocol features. If set to false,
-        /// or the ApiVersionRequest fails, the fallback version <see cref="BrokerVersionFallback"/> will be used.
-        /// NOTE: Depends on broker version >=0.10.0. If the request is not supported by (an older) broker the <see cref="BrokerVersionFallback"/> fallback is used.
-        /// </summary>
         public bool ApiVersionRequest { get; set; } = true;
-        /// <summary>
-        /// Older broker versions (before 0.10.0) provide no way for a client to query for supported protocol features
-        /// (<see cref="ApiVersionRequest"/>) making it impossible for the client to know what features it may use.
-        /// As a workaround a user may set this property to the expected broker version and the client will automatically adjust
-        /// its feature set accordingly if the ApiVersionRequest fails (or is disabled). The fallback broker version will be
-        /// used for <see cref="VersionFallbackMs"/>. Valid values are: 0.9.0, 0.8.2, 0.8.1, 0.8.0. Any other value >= 0.10,
-        /// such as 0.10.2.1, enables ApiVersionRequests.
-        /// </summary>
+
         public string BrokerVersionFallback { get; set; } = "0.10.0.0";
-        /// <summary>
-        /// Dictates how long the <see cref="BrokerVersionFallback"/> is used in the case the ApiVersionRequest fails.
-        /// NOTE: The ApiVersionRequest is only issued when a new connection to the broker is made (such as after an upgrade).
-        /// </summary>
+
         public int VersionFallbackMs { get; set; }
         public string BootstrapServers { get; set; } = string.Empty;
 
