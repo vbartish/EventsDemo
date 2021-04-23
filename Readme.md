@@ -2,12 +2,16 @@
 
 This project intended for experiments and demo purposes around events aggregation.
 
+*DISCLAIMER:* 
+current state of the repo is just it - sandbox. So you'll find a lot of place for improvement in code styling, DRY, tests and other things.
+
 # Dependencies
-1. Project Tye https://github.com/dotnet/tye
+1. Project Tye https://github.com/dotnet/tye (and as a consequence Docker)
     - to install it follow steps here https://github.com/dotnet/tye/blob/main/docs/getting_started.md
+2. Rest of the stuff we're getting from dockerhub or building on our own. However you might want to have a MS SQL management studio and PGAdmin (or whatever the tool you prefer) on quick access.
 
 
-## Demo steps
+## Demo steps (tagged in the repo using convention `step<number>` for example `step1`)
 1. get Tye, set up SQL Server DB and get fake data gen built using GRPC service and client 
    (for those who are not familiar with GRPC and protobuf - visit https://docs.microsoft.com/en-us/aspnet/core/grpc/?view=aspnetcore-5.0)
 2. get CDC enabled on SQL Server (More about SQL Server CDC here https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=sql-server-ver15)
@@ -25,6 +29,21 @@ Nice! you've got CDC running!
 6. prepare Aggregator state store
 7. Consume!
 8. Aggregate! (note the transactional outbox)
+9. Publish!
+
+Aaand here you are.
+
+## Further recommendations
+0. Retention policy and Compensation API!!!
+1. bulkhead
+2. instrumentation
+3. performance measurements and optimizations (aggregation approach here could be optimized)
+
+## Ideas on what to wire up next
+1. Zipkin
+2. Build something to demonstrate windowing technique
+3. Blazor front end to wrap this up with some UI
+4. Consider building alternative sln using actor framework
 
 ### cheat sheet
 

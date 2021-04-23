@@ -103,7 +103,8 @@ namespace VBart.EventsDemo.Inventory.Aggregator
                             projectionPipelineBuilder
                                 .RegisterType<OutboxWorkItemsDataService<Change>>()
                                 .InstancePerLifetimeScope();
-                        });
+                        })
+                        .AddOutboxPublisherWorker<Vehicle>("VEHICLE_PUBLISHER");;
                         containerBuilder.RegisterType<SystemClock>().As<ISystemClock>().SingleInstance();
                 })
                 .Build()
