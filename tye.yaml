@@ -4,6 +4,11 @@ extensions:
 services:
   - name: InventoryApi
     project: src\VBart.EventsDemo.Inventory.Api\VBart.EventsDemo.Inventory.Api.csproj
+    bindings:
+      - protocol: http
+        port: 50052
+        containerPort: 50052
+    replicas: 3
 
   - name: DataGen
     project: src\VBart.EventsDemo.Inventory.DataGen\VBart.EventsDemo.Inventory.DataGen.csproj
@@ -24,7 +29,7 @@ services:
 
 
   - name: monolithicdb
-    image: mcr.microsoft.com/mssql/server:latest
+    image: mcr.microsoft.com/mssql/server:2019-CU10-ubuntu-20.04
     bindings:
       - name: Default
         port: 1433

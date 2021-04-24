@@ -25,7 +25,7 @@ namespace VBart.EventsDemo.Inventory.DataGen
             Console.CancelKeyPress += (_, _) => { cancellationTokenSource.Cancel(); };
 
             var configuration = new ConfigurationBuilder().AddEnvironmentVariables().AddCommandLine(args).Build();
-            var uri = configuration.GetServiceUri("InventoryApi")?.AbsoluteUri ?? "http://localhost:50051";
+            var uri = configuration.GetServiceUri("InventoryApi")?.AbsoluteUri ?? "http://localhost:5000";
             var vehiclesToCreate = int.Parse(configuration["vehicles"] ?? "5");
             var wait = int.Parse(configuration["wait"] ?? "1");
             using var channel = GrpcChannel.ForAddress(uri);

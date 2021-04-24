@@ -18,7 +18,6 @@ namespace VBart.EventsDemo.Inventory.Api
 {
     static class Program
     {
-        private const int DefaultPort = 50052;
         static Task Main() =>
             new HostBuilder()
                 .ConfigureAppConfiguration((hostingContext, config) =>
@@ -45,9 +44,7 @@ namespace VBart.EventsDemo.Inventory.Api
                     webBuilder
                         .ConfigureKestrel((context, options) =>
                         {
-                            var myServiceUri = context.Configuration.GetServiceUri("InventoryApi");
-                            options.ListenLocalhost(myServiceUri?.Port ?? DefaultPort,
-                                listenOptions => listenOptions.Protocols = HttpProtocols.Http2);
+                            options.ConfigureEndpointDefaults(listenOptions => listenOptions.Protocols = HttpProtocols.Http2);
                         })
                         .Configure((_, appBuilder) =>
                         {
