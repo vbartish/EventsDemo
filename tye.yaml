@@ -1,4 +1,6 @@
 name: vbart.eventsdemo
+extensions:
+  - name: zipkin
 services:
   - name: InventoryApi
     project: src\VBart.EventsDemo.Inventory.Api\VBart.EventsDemo.Inventory.Api.csproj
