@@ -22,9 +22,6 @@ current state of the repo is just it - sandbox. So you'll find a lot of place fo
 4. get Kafka Connect, and Debezium connector
    - https://docs.confluent.io/platform/current/connect/index.html#
    - https://debezium.io/
-
-
-Nice! you've got CDC running!
 5. get utils prepared (pipeline, background worker)
 6. prepare Aggregator state store
 7. Consume!
